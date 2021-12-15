@@ -1,6 +1,5 @@
 pipeline {
    agent any
-
    tools {
        maven 'maven'
        jdk 'Java'
@@ -10,13 +9,24 @@ pipeline {
  //  }
    stages{
        stage("clean"){
-      
          steps
             {
                 sh 'mvn clean'
             }
        }
+       stage("test"){
+           
+          when{
+             branch 'test'
+          }
+       
 
+         steps
+            {
+                sh 'mvn clean test'
+            }
+
+   }
    stage("packaging"){
       when{
              branch 'prod'
@@ -29,6 +39,10 @@ pipeline {
 
             
 
+             }
+       }
+
+                sh 'mvn package'
             }
        }
    }
