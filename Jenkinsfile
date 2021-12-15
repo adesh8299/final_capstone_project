@@ -9,9 +9,6 @@ pipeline {
  //  }
    stages{
        stage("clean"){
-           
-         
- 
          steps
             {
                 sh 'mvn clean'
@@ -30,7 +27,6 @@ pipeline {
             }
 
    }
-
    stage("packaging"){
       when{
              branch 'prod'
@@ -38,10 +34,17 @@ pipeline {
            
          steps
             {
+
+                sh 'mvn package -DskipTests'
+
+            
+
+             }
+       }
+
                 sh 'mvn package'
             }
        }
-
    }
 }
 
