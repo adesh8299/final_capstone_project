@@ -3,7 +3,7 @@ pipeline {
 
    tools {
        maven 'maven'
-       jdk 'Java'
+       jdk 'java'
    }
   environment {
      dockerhub=credentials('dockerhub')
