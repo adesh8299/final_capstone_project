@@ -15,7 +15,7 @@ spec:
         app: capstone
     spec:
       containers:
-        - image: naincykumari123/capstone:1.01
+        - image: adesh8299/capstone:1.01
           name: myweb
           ports:
             - containerPort: 8081
