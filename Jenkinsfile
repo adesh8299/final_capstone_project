@@ -47,6 +47,14 @@ pipeline {
                 sh 'docker push adesh8299/capstone:1.01 '
             }
         }
+      stage('Deploy App') {
+         when{
+                branch "prod"
+         }
+      steps {
+         kubernetesDeploy configs: '**/Deployment.yml', kubeConfig: [path: ''], kubeconfigId: 'kubernetes', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
+            }
+         }
    }
 }
 
